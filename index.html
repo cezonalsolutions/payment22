@@ -1,0 +1,172 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CEZOO ₹1 Payment Test</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: #f7f7f8;
+      font-family: Arial, sans-serif;
+      color: #111;
+    }
+
+    .payment-card {
+      width: 100%;
+      max-width: 390px;
+      background: #fff;
+      border-radius: 24px;
+      padding: 30px 22px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    }
+
+    .brand {
+      text-align: center;
+      font-size: 27px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #777;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+
+    .amount-label {
+      text-align: center;
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 5px;
+    }
+
+    .amount {
+      text-align: center;
+      font-size: 44px;
+      font-weight: 800;
+      margin-bottom: 30px;
+    }
+
+    .merchant {
+      background: #f7f7f7;
+      border-radius: 15px;
+      padding: 15px;
+      margin-bottom: 22px;
+    }
+
+    .merchant-title {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 6px;
+    }
+
+    .merchant-name {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .upi-id {
+      font-size: 13px;
+      color: #666;
+      word-break: break-all;
+    }
+
+    .phonepe-btn {
+      width: 100%;
+      border: 0;
+      border-radius: 15px;
+      padding: 17px;
+      background: #5f259f;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .15s ease;
+    }
+
+    .phonepe-btn:active {
+      transform: scale(.98);
+    }
+
+    .note {
+      text-align: center;
+      margin-top: 16px;
+      color: #999;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="payment-card">
+
+    <div class="brand">CEZOO</div>
+    <div class="subtitle">UPI Payment Test</div>
+
+    <div class="amount-label">AMOUNT TO PAY</div>
+    <div class="amount">₹1</div>
+
+    <div class="merchant">
+      <div class="merchant-title">PAYING TO</div>
+      <div class="merchant-name">Cezonal Solutions Pvt Ltd</div>
+      <div class="upi-id">cezonalsolutionspvtltd@ybl</div>
+    </div>
+
+    <button
+      class="phonepe-btn"
+      type="button"
+      onclick="openPhonePe()"
+    >
+      Pay ₹1 with PhonePe
+    </button>
+
+    <div class="note">
+      You will be redirected to a UPI app to complete the payment.
+    </div>
+
+  </div>
+
+
+  <script>
+    function openPhonePe() {
+
+      const upiId = "cezonalsolutionspvtltd@ybl";
+      const payeeName = "Cezonal Solutions Pvt Ltd";
+      const amount = "1.00";
+
+      const transactionNote = "CEZOO Test Payment";
+
+      const upiUrl =
+        "upi://pay" +
+        "?pa=" + encodeURIComponent(upiId) +
+        "&pn=" + encodeURIComponent(payeeName) +
+        "&am=" + encodeURIComponent(amount) +
+        "&cu=INR" +
+        "&tn=" + encodeURIComponent(transactionNote);
+
+      // Open installed UPI app / chooser
+      window.location.href = upiUrl;
+    }
+  </script>
+
+</body>
+</html>
+```
